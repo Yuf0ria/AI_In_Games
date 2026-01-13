@@ -439,7 +439,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 1
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -552,9 +552,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 404915537}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9472e73a59274b9b8da79d72004bd8b, type: 3}
+  m_Script: {fileID: 11500000, guid: 1eabd8b5ad8dc4a4eab76e94c7bf771c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.AI.Navigation.Samples::Unity.AI.Navigation.Samples.ClickToMove
+  m_EditorClassIdentifier: Assembly-CSharp::AgentAI
+  pointA: {fileID: 1209482923}
+  pointB: {fileID: 1727064531}
+  currentTarget: {fileID: 1209482923}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,8 +1187,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshLink
   m_SerializedVersion: 1
   m_AgentTypeID: 0
-  m_StartPoint: {x: 0.00000088765523, y: -7.7403746, z: 1.2138075}
-  m_EndPoint: {x: 0.00000013395261, y: 4.841584, z: -3.963676}
+  m_StartPoint: {x: 0.00000085928946, y: -7.7403746, z: 6.381757}
+  m_EndPoint: {x: 0.00000009983834, y: 4.004676, z: -6.1775045}
   m_StartTransform: {fileID: 0}
   m_EndTransform: {fileID: 0}
   m_Activated: 1
@@ -1194,7 +1197,7 @@ MonoBehaviour:
   m_IsOverridingCost: 0
   m_Bidirectional: 1
   m_AutoUpdatePosition: 0
-  m_Area: 2
+  m_Area: 0
 --- !u!4 &1120977325
 Transform:
   m_ObjectHideFlags: 0
@@ -1204,7 +1207,7 @@ Transform:
   m_GameObject: {fileID: 1120977323}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 8.71, z: 0.66}
+  m_LocalPosition: {x: 0.07, y: 8.71, z: 0.66}
   m_LocalScale: {x: 4.31559, y: 3.2285018, z: 2.824339}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1316,7 +1319,7 @@ Transform:
   m_GameObject: {fileID: 1209482919}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.46893, y: 1.02825, z: 5.56}
+  m_LocalPosition: {x: -11.18, y: 2.17, z: 1.22}
   m_LocalScale: {x: 0.3492795, y: 0.3492795, z: 0.3492795}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1434,6 +1437,118 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1299892062}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1727064527
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1727064531}
+  - component: {fileID: 1727064530}
+  - component: {fileID: 1727064529}
+  - component: {fileID: 1727064528}
+  m_Layer: 0
+  m_Name: Waypoint B
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1727064528
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727064527}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1727064529
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727064527}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1727064530
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727064527}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1727064531
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727064527}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11.18, y: 13.103, z: 2.42}
+  m_LocalScale: {x: 0.3492795, y: 0.3492795, z: 0.3492795}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1782041417
 GameObject:
   m_ObjectHideFlags: 0
@@ -1598,7 +1713,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd76b8ee2dbcf4be6998e917c65cd6ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.AI.Navigation.Samples::Unity.AI.Navigation.Samples.RandomWalk
-  m_Range: 25
 --- !u!1 &2036808692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,7 +1819,7 @@ Transform:
   m_GameObject: {fileID: 2036808692}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.08, y: 12.71, z: 0.5}
+  m_LocalPosition: {x: -13.05, y: 12.71, z: 0.5}
   m_LocalScale: {x: 15.49269, y: 0.46992308, z: 16.37814}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1835,5 +1949,6 @@ SceneRoots:
   - {fileID: 404915542}
   - {fileID: 1782041423}
   - {fileID: 1209482923}
+  - {fileID: 1727064531}
   - {fileID: 1120977325}
   - {fileID: 231895444}
