@@ -1,16 +1,37 @@
+using System;
 using UnityEngine;
 
 public class TrafficLight : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public enum LightColor
     {
-        
+        red,
+        orange,
+        green
+    }
+    
+    public LightColor current = LightColor.red;
+    public TrafficLight light;
+
+    public bool isRed => current == LightColor.red;
+    public bool isOrange => current == LightColor.orange;
+    public bool isGreen => current == LightColor.green;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        CarAI car = other.GetComponent<CarAI>();
+        if (car != null)
+        {
+            car.SetActiveTrafficLight(light);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit(Collider other)
     {
-        
+        CarAI car = other.GetComponent<CarAI>();
+        if (car != null)
+        {
+            car.ClearActiveTrafficLight(light);
+        }
     }
 }
