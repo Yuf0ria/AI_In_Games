@@ -1,37 +1,20 @@
-using System;
 using UnityEngine;
 
+// Enum representing possible traffic light colors.
+// Using enum makes the Inspector dropdown simple and safe.
+public enum LightColor { Red, Orange, Green }
+
+// TrafficLight is a simple component that stores a light color.
+// Cars will read these booleans to decide what to do.
 public class TrafficLight : MonoBehaviour
 {
-    public enum LightColor
-    {
-        red,
-        orange,
-        green
-    }
-    
-    public LightColor current = LightColor.red;
-    public TrafficLight light;
+    // Current light state shown in Inspector.
+    // You can manually change it while testing.
+    public LightColor current = LightColor.Red;
 
-    public bool isRed => current == LightColor.red;
-    public bool isOrange => current == LightColor.orange;
-    public bool isGreen => current == LightColor.green;
-
-    private void OnTriggerEnter(Collider other)
-    {
-        CarAI car = other.GetComponent<CarAI>();
-        if (car != null)
-        {
-            car.SetActiveTrafficLight(light);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        CarAI car = other.GetComponent<CarAI>();
-        if (car != null)
-        {
-            car.ClearActiveTrafficLight(light);
-        }
-    }
+    // Convenience properties so code reads naturally:
+    // e.g. if (light.IsRed) ...
+    public bool IsRed => current == LightColor.Red;
+    public bool IsOrange => current == LightColor.Orange;
+    public bool IsGreen => current == LightColor.Green;
 }

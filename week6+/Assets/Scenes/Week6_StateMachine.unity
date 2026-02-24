@@ -119,6 +119,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &203606712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 203606713}
+  m_Layer: 6
+  m_Name: Sensor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &203606713
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203606712}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0.62}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 816494117}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &260968744
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,7 +765,7 @@ GameObject:
   - component: {fileID: 816494116}
   - component: {fileID: 816494115}
   - component: {fileID: 816494114}
-  - component: {fileID: 816494113}
+  - component: {fileID: 816494118}
   m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
@@ -742,27 +773,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &816494113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 816494112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba22e2e25a76af7a9fbbde41788ab88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CarAI
-  goSpeed: 5
-  slowSpeed: 5
-  accelerationSpeed: 5
-  brake: 1
-  frontCheckingDistance: 1
-  stopDistance: 1
-  carLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!65 &816494114
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -809,7 +819,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4571fb00d4eb7979cbc1b022cf073ba7, type: 2}
+  - {fileID: 2100000, guid: f562207d45b5d9942a92b34117c46d51, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -853,9 +863,36 @@ Transform:
   m_LocalPosition: {x: 10.48, y: 1.58, z: 0.1}
   m_LocalScale: {x: 0.88292235, y: 1, z: 1.9465}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 203606713}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &816494118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816494112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 973f275a993ac9647b9f031fb2587393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarAI
+  goSpeed: 12
+  slowSpeed: 6
+  accel: 8
+  brake: 14
+  frontCheckDistance: 6
+  stopDistance: 2
+  carLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  sensorOrigin: {fileID: 203606713}
+  waypoints:
+  - {fileID: 0}
+  loop: 0
+  waypointDistanceReach: 0
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,7 +1352,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrafficLight
   current: 0
-  light: {fileID: 1789502743}
 --- !u!65 &1789502744
 BoxCollider:
   m_ObjectHideFlags: 0
